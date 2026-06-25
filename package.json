@@ -1,0 +1,13 @@
+{
+  "name": "prova-programacao-avancada-microsservicos",
+  "version": "1.0.0",
+  "description": "Sistema de login, criacao e consulta de usuarios usando microsservicos.",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install --prefix auth-service && npm install --prefix user-service",
+    "start": "concurrently "npm run dev --prefix user-service" "npm run dev --prefix auth-service""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

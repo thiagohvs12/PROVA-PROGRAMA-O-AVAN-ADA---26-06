@@ -1,0 +1,21 @@
+services:
+  user-service:
+    build: ./user-service
+    container_name: prova-user-service
+    ports:
+      - "3002:3002"
+    environment:
+      - PORT=3002
+      - JWT_SECRET=troque-esta-chave
+
+  auth-service:
+    build: ./auth-service
+    container_name: prova-auth-service
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - JWT_SECRET=troque-esta-chave
+      - USER_SERVICE_URL=http://user-service:3002
+    depends_on:
+      - user-service
